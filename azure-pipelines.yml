@@ -4,12 +4,17 @@
 # https://aka.ms/yaml
 
 trigger:
-- none
+ - none
 
 pool:
   vmImage: 'windows-latest'
 
 variables:
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'AzureBAtestProgect'
+    publishLocation: 'Container'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   solution: '**/RoundTheCode.AzureTestProject.sln'
